@@ -4,7 +4,7 @@ export default defineConfig({
     base: '/threejs-pontedluis',
     root: './',
     build: {
-        outDir: './dist',
+        outDir: './threejs-pontedluis',
         assetsDir: '',
     },
 });
