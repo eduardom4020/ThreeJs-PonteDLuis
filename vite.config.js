@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: '/threejs-pontedluis',
+    base: '/ThreeJs-PonteDLuis',
     root: './',
     build: {
-        outDir: './threejs-pontedluis',
+        outDir: './dist',
         assetsDir: '',
     },
 });
