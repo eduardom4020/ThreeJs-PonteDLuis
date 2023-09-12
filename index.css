@@ -1,0 +1,305 @@
+body {
+    position: relative;
+    margin: 0;
+
+    font-family: Garamond, serif;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.title-wrapper {
+    position: absolute;
+    color: white;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: none;
+}
+
+.gradient-mask {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.position-on-top {
+    top: 0;
+    left: 0;
+}
+
+.position-on-bottom {
+    bottom: 0;
+    left: 0;
+}
+
+.normal-font-size {
+    font-size: 16px;
+}
+
+.title-wrapper h1 {
+    font-weight: 200;
+    font-size: 6em;
+}
+
+.half-s-transition {
+    transition: all 0.5s ease 1s;
+}
+
+.font-zero {
+    font-size: 0em;
+}
+
+@keyframes gradientFadeOut {
+    0%   {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0.7) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+    25%  {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0.5) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+    50%  {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0.3) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+    75%  {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0.1) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+    100% {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+}
+
+.bg-gradient-fade-out {
+    animation-name: gradientFadeOut;
+    animation-duration: 0.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes gradientFadeIn {
+    0%   {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+    25%  {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0.1) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+    50%  {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0.3) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+    75%  {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0.5) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+    100% {background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0.7) 50%, rgba(5,5,5,0) 80%, rgba(5,5,5,0) 100%);}
+}
+
+.bg-gradient-fade-in {
+    animation-name: gradientFadeIn;
+    animation-duration: 0.5s;
+    animation-delay: 100ms;
+    animation-fill-mode: forwards;
+}
+
+.floating-content {
+    position: fixed;
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    height: 50%;
+    width: 40%;
+    border-radius: 50%;
+    top: 25%;
+    left: 5%;
+}
+
+@keyframes radialGradientFadeIn {
+    0%   {background: radial-gradient(rgba(5,5,5,0) 0%, rgba(5,5,5,0) 75%); font-size: 0;}
+    25%  {background: radial-gradient(rgba(5,5,5,0.2) 0%, rgba(5,5,5,0) 75%); font-size: 4px;}
+    50%  {background: radial-gradient(rgba(5,5,5,0.5) 0%, rgba(5,5,5,0) 75%); font-size: 8px;}
+    75%  {background: radial-gradient(rgba(5,5,5,0.7) 0%, rgba(5,5,5,0) 75%); font-size: 12px;}
+    100% {background: radial-gradient(rgba(5,5,5,1) 0%, rgba(5,5,5,0) 75%); font-size: 16px;}
+}
+
+.bg-radial-gradient-fade-in {
+    animation-name: radialGradientFadeIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes radialGradientFadeOut {
+    0%   {background: radial-gradient(rgba(5,5,5,1) 0%, rgba(5,5,5,0) 75%); font-size: 16px;}
+    25%  {background: radial-gradient(rgba(5,5,5,0.7) 0%, rgba(5,5,5,0) 75%); font-size: 12px;}
+    50%  {background: radial-gradient(rgba(5,5,5,0.5) 0%, rgba(5,5,5,0) 75%); font-size: 8px;}
+    75%  {background: radial-gradient(rgba(5,5,5,0.2) 0%, rgba(5,5,5,0) 75%); font-size: 4px;}
+    100% {background: radial-gradient(rgba(5,5,5,0) 0%, rgba(5,5,5,0) 75%); font-size: 0;}
+}
+
+.bg-radial-gradient-fade-out {
+    animation-name: radialGradientFadeOut;
+    animation-duration: 0.5s;
+    animation-delay: 100ms;
+    animation-fill-mode: both;
+}
+
+.floating-content p {
+    font-weight: 200;
+    font-size: 1.25em;
+    text-align: justify;
+}
+
+.superposed-images-art {
+    position: relative;
+    width: 100%;
+    height: 30%;
+}
+
+.superposed-images-art > img:first-child {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    border-radius: 16px;
+    transform: rotateZ(354deg);
+}
+
+.superposed-images-art > img:last-child {
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    border-radius: 16px;
+    transform: rotateZ(3deg);
+}
+
+@keyframes imgFadeIn {
+    0%   {transform: scale(0);}
+    25%  {transform: scale(0.25);}
+    50%  {transform: scale(0.5);}
+    75%  {transform: scale(0.75);}
+    100% {transform: scale(1);}
+}
+
+.img-fade-in {
+    animation-name: imgFadeIn;
+    animation-duration: 0.5s;
+    animation-delay: 100ms;
+    animation-fill-mode: backwards;
+}
+
+@keyframes imgFadeOut {
+    0%   {transform: scale(1);}
+    25%  {transform: scale(0.75);}
+    50%  {transform: scale(0.5);}
+    75%  {transform: scale(0.25);}
+    100% {transform: scale(0);}
+}
+
+.img-fade-out {
+    animation-name: imgFadeOut;
+    animation-duration: 0.5s;
+    animation-delay: 100ms;
+    animation-fill-mode: forwards;
+}
+
+.info-2-position {
+    top: 40%;
+    right: 5%;
+    left: unset !important;
+}
+
+.info-3-position .superposed-images-art > img:first-child {
+    top: 20%;
+    left: 5%;
+}
+
+.info-3-position .superposed-images-art > img:last-child {
+    top: 30%;
+    right: 5%;
+}
+
+.floating-slide-button {
+    align-self: center;
+    position: sticky;
+    color: white;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border-radius: 50%;
+    top: 90%;
+}
+
+.floating-slide-button button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    height: 5em;
+    width: 5em;
+}
+
+.floating-slide-button.bottom {
+    bottom: 0;
+}
+
+.floating-slide-button.top {
+    top: 0;
+}
+
+@keyframes radialGradientFadeInMobile {
+    0%   {background: radial-gradient(rgba(5,5,5,0) 0%, rgba(5,5,5,0) 75%); font-size: 0;}
+    25%  {background: radial-gradient(rgba(5,5,5,0.2) 0%, rgba(5,5,5,0) 75%); font-size: 3px;}
+    50%  {background: radial-gradient(rgba(5,5,5,0.5) 0%, rgba(5,5,5,0) 75%); font-size: 6px;}
+    75%  {background: radial-gradient(rgba(5,5,5,0.7) 0%, rgba(5,5,5,0) 75%); font-size: 9px;}
+    100% {background: radial-gradient(rgba(5,5,5,1) 0%, rgba(5,5,5,0) 75%); font-size: 12px;}
+}
+
+@keyframes radialGradientFadeOutMobile {
+    0%   {background: radial-gradient(rgba(5,5,5,1) 0%, rgba(5,5,5,0) 75%); font-size: 12px;}
+    25%  {background: radial-gradient(rgba(5,5,5,0.7) 0%, rgba(5,5,5,0) 75%); font-size: 9px;}
+    50%  {background: radial-gradient(rgba(5,5,5,0.5) 0%, rgba(5,5,5,0) 75%); font-size: 6px;}
+    75%  {background: radial-gradient(rgba(5,5,5,0.2) 0%, rgba(5,5,5,0) 75%); font-size: 3px;}
+    100% {background: radial-gradient(rgba(5,5,5,0) 0%, rgba(5,5,5,0) 75%); font-size: 0;}
+}
+
+@media screen and (max-width: 600px) {
+    .floating-content {
+        position: fixed;
+        color: white;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        height: 30%;
+        width: 80%;
+        border-radius: 50%;
+        top: 55%;
+        left: 10%;
+    }
+
+    .normal-font-size {
+        font-size: 12px;
+    }
+    
+    .title-wrapper h1 {
+        font-size: 3.5em;
+    }
+
+    .superposed-images-art > img:first-child {
+        width: 16em;
+        height: 8em;
+        left: 0;
+    }
+    
+    .superposed-images-art > img:last-child {
+        width: 16em;
+        height: 8em;
+        right: 0;
+    }
+
+    .bg-radial-gradient-fade-in {
+        animation-name: radialGradientFadeInMobile;
+    }
+
+    .bg-radial-gradient-fade-out {
+        animation-name: radialGradientFadeOutMobile;
+    }
+}
