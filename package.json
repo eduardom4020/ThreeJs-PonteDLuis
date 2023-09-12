@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "adjust-gltf": "gltf-transform metalrough",
-    "start": "vite"
+    "start": "vite --mode dev",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "author": "",
   "license": "ISC",

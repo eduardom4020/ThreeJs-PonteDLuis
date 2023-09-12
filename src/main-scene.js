@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
-import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline';
+import { MeshLine, MeshLineMaterial } from 'three.meshline';
 import { BaseScene } from './base-scene';
 import TWEEN, { Tween } from 'three-tween';
 
@@ -96,6 +96,8 @@ export class MainScene extends BaseScene {
 
         this.cleanupInterval = null;
         this.cleanupExecutedTimes = 0;
+
+        this.assetsBasePath = import.meta.env.ASSETS_PATH || '';
     }
 
     showTitle() {
@@ -183,12 +185,12 @@ export class MainScene extends BaseScene {
     }
 
     start(controller, screenMeasures) {
-        const skyTexture_ft = new THREE.TextureLoader().load('src/textures/sky-box-ponte-d-luis/pontedluis_mid.jpg');
-        const skyTexture_bk = new THREE.TextureLoader().load('src/textures/sky-box-ponte-d-luis/pontedluis_mid.jpg');
-        const skyTexture_up = new THREE.TextureLoader().load('src/textures/sky-box-ponte-d-luis/pontedluis_sky.jpg');
-        const skyTexture_dn = new THREE.TextureLoader().load('src/textures/sky-box-ponte-d-luis/pontedluis_dn.jpg');
-        const skyTexture_rt = new THREE.TextureLoader().load('src/textures/sky-box-ponte-d-luis/pontedluis_mid.jpg');
-        const skyTexture_lf = new THREE.TextureLoader().load('src/textures/sky-box-ponte-d-luis/pontedluis_mid.jpg');
+        const skyTexture_ft = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/sky-box-ponte-d-luis/pontedluis_mid.jpg`);
+        const skyTexture_bk = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/sky-box-ponte-d-luis/pontedluis_mid.jpg`);
+        const skyTexture_up = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/sky-box-ponte-d-luis/pontedluis_sky.jpg`);
+        const skyTexture_dn = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/sky-box-ponte-d-luis/pontedluis_dn.jpg`);
+        const skyTexture_rt = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/sky-box-ponte-d-luis/pontedluis_mid.jpg`);
+        const skyTexture_lf = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/sky-box-ponte-d-luis/pontedluis_mid.jpg`);
 
         const skyBoxMaterial = [
             new THREE.MeshBasicMaterial({ map: skyTexture_ft, side: THREE.BackSide }),
@@ -207,7 +209,7 @@ export class MainScene extends BaseScene {
         const loader = new GLTFLoader();
 
         loader.load(
-            'src/models/ponte-d-luis/scene.gltf',
+            `${this.assetsBasePath}models/ponte-d-luis/scene.gltf`,
             gltf => {
                 gltf.scene.traverse((object) => {
                     if (object.isMesh) {
@@ -223,7 +225,7 @@ export class MainScene extends BaseScene {
             }
         );
 
-        const ponteDLuisFacingDoroTexture = new THREE.TextureLoader().load('src/textures/scenarios/ponte-d-luis/pontedluis_facing_doro.png');
+        const ponteDLuisFacingDoroTexture = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/scenarios/ponte-d-luis/pontedluis_facing_doro.png`);
         const planeFacingDoroMaterial = new THREE.MeshBasicMaterial({ map: ponteDLuisFacingDoroTexture, transparent: true, color: new THREE.Color(0.15, 0.15, 0.15) });
         planeFacingDoroMaterial.shininess = 100;
         planeFacingDoroMaterial.needsUpdate = true;
@@ -234,7 +236,7 @@ export class MainScene extends BaseScene {
 
         this.scene.add( planeFacingDoro );
 
-        const ponteDLuisFacingSeaTexture = new THREE.TextureLoader().load('src/textures/scenarios/ponte-d-luis/pontedluis_facing_sea.png');
+        const ponteDLuisFacingSeaTexture = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/scenarios/ponte-d-luis/pontedluis_facing_sea.png`);
         const planeFacingSeaMaterial = new THREE.MeshBasicMaterial({ map: ponteDLuisFacingSeaTexture, transparent: true, color: new THREE.Color(0.15, 0.15, 0.15) });
         planeFacingSeaMaterial.shininess = 100;
         planeFacingSeaMaterial.needsUpdate = true;
@@ -246,7 +248,7 @@ export class MainScene extends BaseScene {
 
         this.scene.add( planeFacingSea );
 
-        const monasteryTexture = new THREE.TextureLoader().load('src/textures/scenarios/ponte-d-luis/monastery.png');
+        const monasteryTexture = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/scenarios/ponte-d-luis/monastery.png`);
         const monasteryMaterial = new THREE.MeshBasicMaterial({ map: monasteryTexture, transparent: true, color: new THREE.Color(0.15, 0.15, 0.15) });
         monasteryMaterial.shininess = 100;
         monasteryMaterial.needsUpdate = true;
@@ -259,7 +261,7 @@ export class MainScene extends BaseScene {
 
         this.scene.add( monastery );
 
-        const sunTexture = new THREE.TextureLoader().load('src/textures/scenarios/ponte-d-luis/sun.png');
+        const sunTexture = new THREE.TextureLoader().load(`${this.assetsBasePath}textures/scenarios/ponte-d-luis/sun.png`);
         const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture, transparent: true });
         const sun = new THREE.Mesh( new THREE.PlaneGeometry( 20, 20 ), sunMaterial );
         sun.name = 'Sun';
